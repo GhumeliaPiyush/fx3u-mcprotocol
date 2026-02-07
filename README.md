@@ -1,5 +1,18 @@
 # fx3u-mcprotocol
 
+Python MC Protocol driver for Mitsubishi FX3 series PLCs  
+(Tested with FX3U + FX3U-ENET-ADP over Ethernet)
+
+This library allows Python applications to read PLC memory
+(D, M, X, Y, R devices) from Mitsubishi FX3 PLCs using
+MC Protocol (ASCII mode) over TCP/IP.
+
+It is designed for:
+- Industrial automation
+- Data logging
+- SCADA / HMI integration
+- Custom monitoring & control tools
+
 An independent, open-source Python library for communicating with
 Mitsubishi FX3-series PLCs via Ethernet using the MC Protocol
 (ASCII and Binary) over TCP.
@@ -26,6 +39,14 @@ Mitsubishi Electric Corporation.
 - CPU-aware memory validation
 - Cross-platform (Windows / Linux)
 
+## Installation
+
+Install from PyPI using `pip`:
+
+```bash
+pip install fx3u-mcprotocol
+```
+
 ## ✅ Stable ASCII MC Protocol support (FX3 series)
 ## ⚠️ Binary MC Protocol support is experimental and may vary by firmware
 
@@ -48,4 +69,8 @@ print(plc.readBits("M0", 8))
 
 plc.close()
 
+```
+## Author
 
+Piyush Ghumelia
+Industrial Automation & Python Developer
