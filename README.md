@@ -73,4 +73,3 @@ plc.close()
 ## Author
 
 Piyush Ghumelia
-Industrial Automation & Python Developer
