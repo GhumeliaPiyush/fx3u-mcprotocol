@@ -85,8 +85,9 @@ class ASCIIProtocol:
         for i in range(count):
             raw = data[i * 4:(i + 1) * 4]
             # ASCII is high→low, value is low→high
-            swapped = raw[2:4] + raw[0:2]
-            values.append(int(swapped, 16))
+            # swapped = raw[2:4] + raw[0:2]
+            # values.append(int(swapped, 16))
+            values.append(int(raw, 16))
 
         return values
 
