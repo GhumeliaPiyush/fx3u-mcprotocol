@@ -86,7 +86,11 @@ class ASCIIProtocol:
             raw = data[i * 4:(i + 1) * 4]
             # ASCII is high→low, value is low→high
             # swapped = raw[2:4] + raw[0:2]
-            # values.append(int(swapped, 16))
+            
+            if len(raw) != 4:
+                raise PLCError(
+                    f"Incomplete word response: '{raw}'"
+                )
             values.append(int(raw, 16))
 
         return values
@@ -101,6 +105,11 @@ class ASCIIProtocol:
         cls._check_completion(text)
 
         data = text[4:]
+        
+        if len(data) < count:
+            raise PLCError(
+                f"Incomplete bit response: '{data}'"
+            )
         return [char == "1" for char in data[:count]]
 
     # ---- Internal helpers ----

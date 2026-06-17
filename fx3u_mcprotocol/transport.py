@@ -47,16 +47,25 @@ class TCPTransport:
             raise ConnectionError(f"Failed to send data: {exc}")
 
     def receive(self, size: int = 4096) -> bytes:
-        """
-        Receive raw bytes from the PLC.
-        """
+
         if not self._sock:
             raise ConnectionError("Not connected to PLC")
 
         try:
-            return self._sock.recv(size)
+
+            data = self._sock.recv(size)
+
+            if not data:
+                raise ConnectionError(
+                    "PLC closed connection (empty response)"
+                )
+
+            return data
+
         except Exception as exc:
-            raise ConnectionError(f"Failed to receive data: {exc}")
+            raise ConnectionError(
+                f"Failed to receive data: {exc}"
+            )
 
     def close(self):
         """
